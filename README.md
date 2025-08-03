@@ -29,6 +29,7 @@ source venv/bin/activate
 
 # Install dependencies
 pip install -r libraries.txt
+```
 
 ## Usage & Example
 You can run the backtest directly from the command line.  
@@ -38,6 +39,12 @@ python main.py --ticker AAPL --option_type call --strike 105 \
     --expiry_days 30 --position long --contracts 2 \
     --execution_date 2023-06-15
 
+## Plots
+![alt text](<Screenshot 2025-08-03 231922.png>)
+
+![alt text](<Screenshot 2025-08-03 232024.png>)
+
+```bash
 ##Project Structure
 ├── backtesting/
 │   ├── backtester.py          # Core PnL simulation logic
@@ -52,6 +59,7 @@ python main.py --ticker AAPL --option_type call --strike 105 \
 ├── libraries.txt           # Dependencies list
 └── README.md                 
 
+```
 ## License
 MIT
 
