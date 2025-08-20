@@ -23,9 +23,15 @@ It’s perfect for **quantitative traders**, **options enthusiasts**, or anyone 
 # Clone this repository
 git clone https://github.com/Abhinav-Kumar2/options_pricing_model.git
 
+# Enter project directory
+cd options_pricing_model
+
 # Create a virtual environment
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate 
+
+# Upgrade pip
+pip install --upgrade pip
 
 # Install dependencies
 pip install -r libraries.txt
