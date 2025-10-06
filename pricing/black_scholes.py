@@ -8,6 +8,12 @@ def black_scholes_price(S, K, T, r, sigma, option_type="call"):
     r = float(r)
     sigma = float(sigma)
 
+    if T <= 0:
+        if option_type.lower() == "call":
+            return max(0.0, S - K), {"ex": True}
+        else:
+            return max(0.0, K - S), {"ex": True}
+
     d1 = (math.log(S / K) + (r + 0.5 * sigma ** 2) * T) / (sigma * math.sqrt(T))
     d2 = d1 - sigma * math.sqrt(T)
 
