@@ -4,14 +4,12 @@ import numpy as np
 def plot_results(df, ticker, option_type):
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 8))
 
-    # Plot 1: Stock price
     ax1.set_ylabel("Stock Price", color="tab:blue")
     ax1.plot(df.index, df["stock_price"], color="tab:blue", label="Stock Price", linewidth=2)
     ax1.tick_params(axis='y', labelcolor="tab:blue")
     ax1.grid(True, alpha=0.3)
     ax1.legend(loc="upper left")
 
-    # Plot 2: Option price
     ax2.set_xlabel("Date")
     ax2.set_ylabel("Option Price", color="tab:red")
     
@@ -34,14 +32,12 @@ def plot_results(df, ticker, option_type):
 def plot_results_with_pnl(df, ticker, option_type, position_type):
     fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(12, 10))
 
-    # Plot 1: Stock price
     ax1.set_ylabel("Stock Price", color="tab:blue")
     ax1.plot(df.index, df["stock_price"], color="tab:blue", label="Stock Price", linewidth=2)
     ax1.tick_params(axis='y', labelcolor="tab:blue")
     ax1.grid(True, alpha=0.3)
     ax1.legend(loc="upper left")
 
-    # Plot 2: Option price
     ax2.set_ylabel("Option Price", color="tab:red")
     
     option_prices = df["option_price"]

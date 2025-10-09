@@ -4,6 +4,7 @@ from pricing.binomial_options import binomial_price
 from pricing.trinomial_options import trinomial_price
 from pricing.monte_carlo import monte_carlo_price  
 
+
 def run_backtest_with_pnl(data,option_type,strike,T,r,sigma,logger,position_type="long",contracts=1,execution_date=None,pricing_model="black_scholes",steps=200,american=False,simulations=100000):
 
     results = [] #will store simulation results before dataframe is made

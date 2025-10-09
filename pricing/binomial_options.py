@@ -10,7 +10,6 @@ def binomial_price(S, K, T, r, sigma, option_type="call", steps=200, american=Fa
     option_type = option_type.lower()
     n = int(max(1, steps))
 
-    # handle degenerate T==0
     if T <= 0:
         if option_type == "call":
             return max(0.0, S - K), {"ex": True}
@@ -21,9 +20,8 @@ def binomial_price(S, K, T, r, sigma, option_type="call", steps=200, american=Fa
     u = math.exp(sigma * math.sqrt(dt))
     d = 1.0 / u
     disc = math.exp(-r * dt)
-    p = (math.exp(r * dt) - d) / (u - d)  # risk-neutral probability
+    p = (math.exp(r * dt) - d) / (u - d) 
 
-    # stock price at node i (i = number of up moves): S * u^i * d^(n-i)
     i = np.arange(0, n + 1)
     ST = S * (u ** i) * (d ** (n - i))
     if option_type == "call":
@@ -35,14 +33,13 @@ def binomial_price(S, K, T, r, sigma, option_type="call", steps=200, american=Fa
     for step in range(n - 1, -1, -1):
         values = disc * (p * values[1:step + 2] + (1 - p) * values[0:step + 1])
         if american:
-            # stock prices at current step
             i = np.arange(0, step + 1)
             S_now = S * (u ** i) * (d ** (step - i))
             if option_type == "call":
                 exercise = np.maximum(S_now - K, 0.0)
             else:
                 exercise = np.maximum(K - S_now, 0.0)
-            values = np.maximum(values, exercise)  # early exercise check
+            values = np.maximum(values, exercise)
 
     price = float(values[0])
     note = {"method": "CRR Binomial","steps": n,"dt": dt,"u": u,"d": d,"p": p,}

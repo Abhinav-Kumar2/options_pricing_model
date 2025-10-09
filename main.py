@@ -34,21 +34,7 @@ def main():
     logger.info(f"  Execution Date: {args.execution_date}")
     
     logger.info("Running backtest with PnL tracking...")
-    results = run_backtest_with_pnl(
-        data,
-        args.option_type,
-        args.strike,
-        T,
-        r,
-        sigma,
-        logger,
-        position_type=args.position,
-        contracts=args.contracts,
-        execution_date=args.execution_date,
-        pricing_model=args.pricing_model,
-        steps=args.steps,
-        american=args.american
-    )
+    results = run_backtest_with_pnl(data,args.option_type,args.strike,T,r,sigma,logger,position_type=args.position,contracts=args.contracts,execution_date=args.execution_date,pricing_model=args.pricing_model,steps=args.steps,american=args.american)
     results.to_csv("backtest_pnl_results.csv")
     logger.info("Results saved to backtest_pnl_results.csv")
 
